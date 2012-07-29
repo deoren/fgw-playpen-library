@@ -16,7 +16,7 @@ using namespace studentgraphics;
 	typedef void (plot_policy)(fgw::playpen &, int x, int y, fgw::hue);
 	
 //	  wrapper to convert member function to free function
-//    allows simple line drawing functions to delegat 
+//    allows simple line drawing functions to delegate 
 inline void plot(fgw::playpen & canvas, int x, int y, fgw::hue shade = fgw::black){
 	canvas.plot(x, y, shade);
 }

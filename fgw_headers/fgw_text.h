@@ -47,7 +47,7 @@ public:
 		std::cout << "DONE\n";
 	}
 	
-// the following function assumes that the user wants that starts with a non-whitespace character
+// the following function assumes that the user wants data that starts with a non-whitespace character
 
 inline void getdata(std::istream & in, std::string & data){
 	in >> std::ws;
