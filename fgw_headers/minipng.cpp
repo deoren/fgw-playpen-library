@@ -216,6 +216,7 @@ extern "C"{
    // filtering can improve the compression ratio.
        class Filter {
       public:
+		virtual ~Filter(){}
       // Purpose:
       //	Notify that a scanline is about to be unfiltered using this filter
       //	algoritm.

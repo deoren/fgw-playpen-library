@@ -4,7 +4,7 @@ AR = ar.exe
 
   OBJ_DIR = Release
   OUTPUT_DIR = Release
-  TARGET = libfgwz.a
+  TARGET = libfgw.a
   C_INCLUDE_DIRS = 
   C_PREPROC = 
   CFLAGS = -pipe  -Wall -g0 -O2 -frtti -fexceptions 

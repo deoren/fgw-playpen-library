@@ -75,6 +75,7 @@ namespace MiniPNG {
 	// unwinding.
 	class WritableImage {
 	public:
+		virtual ~WritableImage(){};
 		// Purpose:
 		//	Notify that an image write is beginning.
 		virtual void BeginWrite() = 0;
@@ -148,6 +149,7 @@ namespace MiniPNG {
 	// unwinding.
 	class ReadableImage {
 	public:
+		virtual ~ReadableImage(){};
 		// Purpose:
 		//	Notify that an image read is beginning.
 		virtual void BeginRead() = 0;
