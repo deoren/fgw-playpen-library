@@ -47,7 +47,7 @@ public:
 		std::cout << "DONE\n";
 	}
 	
-// the following function assumes that the user wants data that starts with a non-whitespace character
+// the following function assumes that the user wants that starts with a non-whitespace character
 
 inline void getdata(std::istream & in, std::string & data){
 	in >> std::ws;
@@ -125,7 +125,7 @@ inline int reset_max_tries(int new_max){
 		while(tries++ != max_tries ){
 			std::cout << prompt;
 			std::cin >> temp;
-			if(not cin.eof()) eat_ws_to_eol(std::cin);
+			if(not std::cin.eof()) eat_ws_to_eol(std::cin);
 			if(not std::cin.fail() or std::cin.eof()) return temp;
 		std::cin.clear();	   // if it has failed, reset it to normal
 			std::cin.ignore(INT_MAX, '\n');	   // flush cin
@@ -139,14 +139,14 @@ inline int reset_max_tries(int new_max){
 		in_type temp = value;
 		int tries(0);
 		while(tries++ != max_tries ){
-			if(not cin.eof()) eat_ws_to_eol(cin);
+			if(not std::cin.eof()) eat_ws_to_eol(std::cin);
 			std::cout << prompt << "\nPress RETURN for default(" << value << ") " << std::flush;
 			if(std::cin.peek() == '\n'){
 				std::cin.get();
 				return value;
 			}
 			std::cin >> temp;
-			if(not cin.eof()) eat_ws_to_eol(std::cin);
+			if(not std::cin.eof()) eat_ws_to_eol(std::cin);
 			if(not std::cin.fail() or std::cin.eof()) return value;
 		std::cin.clear();	   // if it has failed, reset it to normal
 			std::cin.ignore(INT_MAX, '\n');	   // flush cin
@@ -168,7 +168,7 @@ inline int reset_max_tries(int new_max){
 			for(int i(0); i != ignore_chars; ++i) std::cin.get();
 			ignore_chars = 0;	// do not ignore for retries
 			std::cin >> temp;
-			if(not cin.eof()) eat_ws_to_eol(std::cin);
+			if(not std::cin.eof()) eat_ws_to_eol(std::cin);
 			if(not std::cin.fail() or std::cin.eof()) return temp;
     		std::cin.clear();	   // if it has failed, reset it to normal
 			std::cin.ignore(INT_MAX, '\n');	   // flush cin

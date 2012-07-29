@@ -211,7 +211,7 @@ namespace MiniPNG {
 	{
 	public:
 		SimpleImage(unsigned width, unsigned height);
-
+		virtual ~SimpleImage(){}
 		// WritableImage functions.
 		virtual void BeginWrite();
 		virtual void SetImageInfo(const ImageInfo& info);

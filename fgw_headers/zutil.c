@@ -7,29 +7,29 @@
 
 #include "zutil.h"
 
-struct internal_state      {int dummy;}; /* for buggy compilers */
+   struct internal_state      {int dummy;}; /* for buggy compilers */
 
 #ifndef STDC
 extern void exit OF((int));
 #endif
 
-const char *z_errmsg[10] = {
-"need dictionary",     /* Z_NEED_DICT       2  */
-"stream end",          /* Z_STREAM_END      1  */
-"",                    /* Z_OK              0  */
-"file error",          /* Z_ERRNO         (-1) */
-"stream error",        /* Z_STREAM_ERROR  (-2) */
-"data error",          /* Z_DATA_ERROR    (-3) */
-"insufficient memory", /* Z_MEM_ERROR     (-4) */
-"buffer error",        /* Z_BUF_ERROR     (-5) */
-"incompatible version",/* Z_VERSION_ERROR (-6) */
-""};
+   const char *z_errmsg[10] = {
+   "need dictionary",     /* Z_NEED_DICT       2  */
+   "stream end",          /* Z_STREAM_END      1  */
+   "",                    /* Z_OK              0  */
+   "file error",          /* Z_ERRNO         (-1) */
+   "stream error",        /* Z_STREAM_ERROR  (-2) */
+   "data error",          /* Z_DATA_ERROR    (-3) */
+   "insufficient memory", /* Z_MEM_ERROR     (-4) */
+   "buffer error",        /* Z_BUF_ERROR     (-5) */
+   "incompatible version",/* Z_VERSION_ERROR (-6) */
+   ""};
 
 
-const char * ZEXPORT zlibVersion()
-{
-    return ZLIB_VERSION;
-}
+    const char * ZEXPORT zlibVersion()
+   {
+      return ZLIB_VERSION;
+   }
 
 #ifdef DEBUG
 
@@ -49,20 +49,14 @@ void z_error (m)
 /* exported to allow conversion of error code to string for compress() and
  * uncompress()
  */
-const char * ZEXPORT zError(err)
-    int err;
-{
-    return ERR_MSG(err);
-}
+    const char * ZEXPORT zError(int err){
+      return ERR_MSG(err);
+   }
 
 
 #ifndef HAVE_MEMCPY
 
-void zmemcpy(dest, source, len)
-    Bytef* dest;
-    const Bytef* source;
-    uInt  len;
-{
+void zmemcpy(Bytef* dest, const Bytef* source, uInt  len){
     if (len == 0) return;
     do {
         *dest++ = *source++; /* ??? to be unrolled */
@@ -205,21 +199,15 @@ extern voidp  calloc OF((uInt items, uInt size));
 extern void   free   OF((voidpf ptr));
 #endif
 
-voidpf zcalloc (opaque, items, size)
-    voidpf opaque;
-    unsigned items;
-    unsigned size;
-{
-    if (opaque) items += size - size; /* make compiler happy */
-    return (voidpf)calloc(items, size);
-}
+    voidpf zcalloc (voidpf opaque, unsigned items, unsigned size){
+      if (opaque) items += size - size; /* make compiler happy */
+      return (voidpf)calloc(items, size);
+   }
 
-void  zcfree (opaque, ptr)
-    voidpf opaque;
-    voidpf ptr;
-{
-    free(ptr);
-    if (opaque) return; /* make compiler happy */
-}
+    void  zcfree (voidpf opaque, voidpf ptr){
+      free(ptr);
+      if (opaque) 
+         return; /* make compiler happy */
+   }
 
 #endif /* MY_ZCALLOC */
