@@ -3,7 +3,7 @@
 
 :: Purpose: Setup directory structure just like unzipping the contents of windows_tutorial.zip would do
 
-for %%folders in (
+for %%f in (
 chapter_1
 chapter_10
 chapter_11
@@ -22,4 +22,4 @@ chapter_6
 chapter_7
 chapter_8
 chapter_9
-) mkdir %%folder
+) mkdir %%f
