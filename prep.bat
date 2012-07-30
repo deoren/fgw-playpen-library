@@ -6,8 +6,6 @@
 
 @echo off
 
-set SVN_REPO=http://projects.whyaskwhy.org/svn/fgw_library/trunk
-
 echo Creating chapter directories ...
 
 for %%f in (
@@ -31,7 +29,4 @@ chapter_8
 chapter_9
 ) do mkdir "%%f"
 
-echo Checking out the unofficial public repository contents ...
 
-svn co --force %SVN_REPO%/docs .
-svn co --force %SVN_REPO%/fgw_headers .
