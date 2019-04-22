@@ -2,8 +2,10 @@
 
 ## Summary
 
-Unofficial copy of the FGW Library (aka "Playpen") from Francis Glassborow's
-C++ Books.
+This is an unofficial collection of the source files for Francis Glassborow's
+FGW Library, aka "Playpen". This library is used for both of his C++ titles
+and is no longer available from the author's website. See the book's page on
+the publisher's site for the last official version.
 
 See [References](#References) section for links to official content.
 
