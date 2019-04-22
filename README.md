@@ -52,3 +52,6 @@ cleanup/restructure the repo a bit.
 
 - [youcandoit - Google Code
   Archive](https://code.google.com/archive/p/youcandoit/downloads)
+
+- [Build for Mac OS X Snow
+  Leopard](http://codechango.blogspot.com/2009/10/fgwlib-working-on-macosx-snow-leopard.html)
