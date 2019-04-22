@@ -1,0 +1,160 @@
+[[Category:Programming]]
+[[Category:Software]]
+[[Category:Books]]
+
+These are my notes for '''You Can Program in C++: A Programmer's Introduction''' <ref>ISBN 0470449586</ref>.
+
+
+== About the book ==
+
+I'll attempt to give proper remarks for this book later, but suffice to say this book is ''well'' worth your time if you're learning C++.  I like how Francis pays particular attention to the pitfalls of the language.  He teaches you to always check for failing function calls (something a lot of "beginner books" fail to do) and teaches you how to use strings and vectors from the beginning in place of arrays.
+
+
+== What if you don't have the cd? ==
+
+Before purchasing a copy of the book & CD, I checked out a copy of the book from a library and did not have the CD. This was ok because at the time the author made the contents available from his website. <ref name="ycdi-book-website">[http://www.spellen.org/youcandoit/resources.htm Official website for this book]</ref> Unfortunately [http://www.whyaskwhy.org/blog/1176/ the author's website hasn't been operational for some time], however on the same note the publisher ''has'' newer content available for download. <ref name="ycdi-book-publisher-website">[http://www.wiley.com/legacy/wileychi/glassborowc++/material.html Publisher's book page]</ref>
+
+At the time the author's website had a broken link to Quincy 2002, <ref name="quincy-2002-homepage">[http://alstevens.com/quincy.html Quincy 2002 homepage]</ref> but I was able to find Quincy 2005 <ref name="quincy-2005-homepage">[http://www.codecutter.net/tools/quincy/ Quincy 2005 homepage]</ref> which is a newer version of it. Thankfully it is still available for download for those that want to use it. Since Francis Glassborow made the source for the '''FGW Library''' (aka, "Playpen") available, we can compile it using newer versions of [[wikipedia:Mingw|MinGW]] or different compilers altogether. That's great because I like to use [[wikipedia:Netbeans|Netbeans]] and the current MinGW and plan on trying out Visual Studio as I'm going through the book.
+
+
+=== Preparing to build the library ===
+
+==== (Optional) Install Quincy ====
+
+If you plan to use Quincy 2005, download it <ref name="quincy-2005-homepage" /> then proceed with the rest of these instructions.
+
+==== Arranging the directory structure ====
+
+# Download the <code>windows_tutorial.zip</code> file from the publisher's website for the book <ref name="ycdi-book-publisher-website" /> and extract to a temporary location.
+# Move all folders inside of <code>windows_tutorial</code> to <code>C:\tutorial</code>.
+# Move all files from the <code>C:\tutorial\source</code> directory to the <code>C:\tutorial\fgw_headers</code> directory, choosing to overwrite existing files.
+# Remove the <code>C:\tutorial\source</code> directory (should have nothing inside of it).
+# Remove the <code>C:\tutorial\libraries</code> directory as we're going to build a newer library file. Aside from the volume serial number, you should see the following:
+<pre>
+C:\tutorial>tree /F
+Folder PATH listing
+Volume serial number is 38B9-1B1A
+C:.
+├───chapter_1
+├───chapter_10
+├───chapter_11
+├───chapter_12
+├───chapter_13
+├───chapter_14
+├───chapter_15
+├───chapter_16
+├───chapter_17
+├───chapter_18
+├───chapter_2
+├───chapter_3
+├───chapter_4
+├───chapter_5
+├───chapter_6
+├───chapter_7
+├───chapter_8
+├───chapter_9
+└───fgw_headers
+        adler32.c
+        colournames.h
+        deflate.c
+        deflate.h
+        fgw_text.h
+        flood_fill.cpp
+        flood_fill.h
+        infblock.c
+        infblock.h
+        infcodes.c
+        infcodes.h
+        inffast.c
+        inffast.h
+        inffixed.h
+        inflate.c
+        inftrees.c
+        inftrees.h
+        infutil.c
+        infutil.h
+        keyboard.h
+        libfgw.a
+        line_drawing.cpp
+        line_drawing.h
+        makefile
+        minipng.cpp
+        minipng.h
+        mouse.h
+        playpen.cpp
+        playpen.h
+        point2d.cpp
+        point2d.h
+        point2dx.cpp
+        point2dx.h
+        shape.cpp
+        shape.h
+        trees.c
+        trees.h
+        winplaypen.gpj
+        zconf.h
+        zlib.h
+        zutil.c
+        zutil.h
+</pre>
+
+
+===== (Optional) Checkout a copy of the source code from public Subversion respository =====
+
+As an alternative to downloading the zip file and arranging the directories as mentioned in the preceding instructions, you can check out a copy of the source code from an unofficial public Subversion repository. Provided you have Subversion installed, you should end up with the same content in <code>C:\tutorial</code> as you would downloading the zip file from the publisher's site and arranging the directory content.
+
+# Open a command prompt
+# <code>mkdir C:\tutorial</code>
+# <code>cd C:\tutorial</code>
+# <code>svn co http://projects.whyaskwhy.org/svn/fgw_library/trunk/ .</code>
+# <code>prep.bat</code>
+
+
+==== Updating your System Path variable ====
+
+You should only follow the directions for one of these, not both.
+
+===== Quincy 2005 =====
+
+If you're using Quincy 2005 <ref name="quincy-2005-homepage" />, modify your PATH by following these directions.
+
+# Open a command prompt (Start->Run->cmd->Enter)
+# <code>set path=%path%;C:\Program Files\quincy\MinGW\bin</code>
+
+===== Current MinGW & MSYS release =====
+
+# Open a command prompt (Start->Run->cmd->Enter)
+# <code>set PATH=%PATH%;C:\MinGW\bin;C:\MinGW\msys\1.0\bin</code>
+
+
+
+==== Copy libgdi32.a to fgw_headers directory ====
+
+===== Quincy 2005 =====
+
+Copy <code>C:\Program Files\quincy\MinGW\lib\libgdi32.a</code> to <code>C:\tutorial\fgw_headers\libgdi32.a</code> and replace any existing copy if it exists.
+
+===== Current MinGW & MSYS release =====
+
+Copy <code>C:\MinGW\lib\libgdi32.a</code> to <code>C:\tutorial\fgw_headers\libgdi32.a</code> and replace any existing copy if it exists.
+
+
+=== Building the library ===
+
+# Open a command prompt
+# <code>cd C:\tutorial\fgw_headers</code>
+# <code>rmdir /s /q Release</code>
+# <code>mkdir Release</code>
+# <code>bash</code>
+# <code>make clean</code>
+# <code>make</code>
+# <code>cp Release/libfgw.a .</code>
+
+
+=== Using the new library ===
+
+Every time the book tells you to add <code>fgwlib.a</code> to your project, reference <code>C:\tutorial\fgw_headers\libfgw.a</code> instead.
+
+== References ==
+
+<references />
